@@ -1,0 +1,33 @@
+
+<h1>Vehicles</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Vehicle</a>
+<input type="text" [(ngModel)]="searchQuery" class="form-control mb-3 searchfilter" placeholder="Search All Fields..."  (keyup)="filterVehicles($event)">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Make</th>
+            <th style="width: 30%">Model</th>
+            <th style="width: 30%">Year</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vehicle of vehicles">
+            <td>{{ vehicle.make }}</td>
+            <td>{{ vehicle.model }}</td>
+            <td>{{ vehicle.year }}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{ vehicle.id }}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteVehicle(vehicle.id)" class="btn btn-sm btn-danger btn-delete-vehicle" [disabled]="vehicle.isDeleting">
+                    <span *ngIf="vehicle.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!vehicle.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!vehicles">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

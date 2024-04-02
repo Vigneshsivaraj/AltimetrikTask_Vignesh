@@ -1,0 +1,5 @@
+package com.task.vehiclemanagementsystem.controllers;
+
+public class VehicleController {
+
+}

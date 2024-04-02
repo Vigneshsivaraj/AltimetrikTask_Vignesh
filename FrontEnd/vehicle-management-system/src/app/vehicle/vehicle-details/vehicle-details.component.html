@@ -1,0 +1,43 @@
+<h1 *ngIf="isAddMode">Add Vehicle</h1>
+<h1 *ngIf="!isAddMode">Edit Vehicle</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Make</label>
+            <input type="text" formControlName="make" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['make'].errors }" />
+            <div *ngIf="submitted && f['make'].errors" class="invalid-feedback">
+                <div *ngIf="f['make'].errors['required']">Make is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label>Model</label>
+            <input type="text" formControlName="model" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['model'].errors }" />
+            <div *ngIf="submitted && f['model'].errors" class="invalid-feedback">
+                <div *ngIf="f['model'].errors['required']">Model is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label>Year</label>
+            <input type="number" formControlName="year" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['year'].errors }" />
+            <div *ngIf="submitted && f['year'].errors" class="invalid-feedback">
+                <div *ngIf="f['year'].errors['required']">Year is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label>VIN</label>
+            <input type="text" formControlName="vin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['vin'].errors }" />
+            <div *ngIf="submitted && f['vin'].errors" class="invalid-feedback">
+                <div *ngIf="f['vin'].errors['required']">VIN is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group mt-4">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/vehicles" class="btn btn-link">Cancel</a>
+    </div>
+</form>

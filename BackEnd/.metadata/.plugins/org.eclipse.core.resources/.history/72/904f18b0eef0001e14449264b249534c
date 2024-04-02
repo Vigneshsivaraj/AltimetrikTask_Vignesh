@@ -1,0 +1,5 @@
+package com.task.vehiclemanagementsystem.services.impl;
+
+public class VehicleServiceImpl {
+
+}
